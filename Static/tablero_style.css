@@ -1,0 +1,37 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0; 
+}
+
+.chessboard {
+    display: grid;
+    grid-template-columns: repeat(8, 100px);
+    grid-template-rows: repeat(8, 100px);
+    gap: 0;
+    border: 2px solid #8b4513; 
+    box-sizing: border-box;
+}
+
+.square {
+    width: 100px;
+    height: 100px;
+    background-color: #f5deb3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.square.dark {
+    background-color: #8b4513;
+}
+
+.square img {
+    width: 80px; 
+    height: 80px;
+    box-sizing: border-box;
+}

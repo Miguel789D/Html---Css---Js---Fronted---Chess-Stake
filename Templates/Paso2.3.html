@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenged - Chess Stake</title>
+    <link rel="stylesheet" href="../Static/Paso2global.css">
+</head>
+<body>
+    <main class="challenge-confirmation-container">
+        <h1>You have challenged the AI at level: Advanced</h1>
+        <p class="game-code">Game Code ---> <strong id="gameCode"></strong></p>
+        <p class="instructions">Save this code. If you win the game, you will need to send it via WhatsApp to the number that will be provided at the end of the game if you are the winner.</p>
+        <div class="button-container">
+            <a href="#" class="btn btn-primary" id="startButton">Start Game</a>
+        </div>
+        <p id="countdown" class="countdown"></p>
+    </main>
+    <script>
+        function generateGameCode() {
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let code = '';
+            for (let i = 0; i < 5; i++) {
+                code += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            return code;
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const gameCodeElement = document.getElementById('gameCode');
+            if (gameCodeElement) {
+                gameCodeElement.textContent = generateGameCode();
+            }
+
+            document.getElementById('startButton')?.addEventListener('click', function (event) {
+                event.preventDefault(); // Prevent link behavior
+                startCountdown();
+            });
+        });
+
+        function startCountdown() {
+            var countdownElement = document.getElementById('countdown');
+            var startButton = document.getElementById('startButton');
+            
+            if (!countdownElement) {
+                console.error('Element with ID "countdown" not found.');
+                return;
+            }
+
+            if (startButton) {
+                startButton.style.display = 'none'; 
+            }
+            
+            var countdown = 5;
+            countdownElement.textContent = countdown;
+            countdownElement.style.display = 'block'; 
+
+            var interval = setInterval(function() {
+                countdown--;
+                countdownElement.textContent = countdown;
+                
+                if (countdown === 0) {
+                    clearInterval(interval);
+                    countdownElement.textContent = 'The game begins!';
+                    
+                    setTimeout(function() {
+                        window.location.href = "../Tablero/Nivel Avanzado/index.html";
+                    }, 2000);
+                }
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
